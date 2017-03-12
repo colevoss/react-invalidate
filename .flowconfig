@@ -1,0 +1,7 @@
+[include]
+./src
+
+[ignore]
+./test
+./lib
+./node_modules
