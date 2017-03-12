@@ -9,11 +9,11 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div>
-    Test
+    Test Something
 </div>,
   "nodes": Array [
     <div>
-      Test
+      Test Something
 </div>,
   ],
   "options": Object {},
@@ -51,11 +51,11 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
-          Test
+          Test Something
 </div>,
         "_debugID": 2,
         "_renderedOutput": <div>
-          Test
+          Test Something
 </div>,
       },
       "_renderedNodeType": 0,
