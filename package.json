@@ -9,7 +9,7 @@
     "lint": "./node_modules/.bin/eslint src test",
     "flow": "./node_modules/.bin/flow",
     "test": "jest",
-    "test:cov": "npm run test -- --coverage",
+    "test:cov": "npm run test -- --coverage && codecov",
     "test:watch": "npm run test -- --watch"
   },
   "keywords": [
@@ -33,6 +33,7 @@
     "babel-eslint": "^7.1.1",
     "babel-preset-env": "^1.2.1",
     "babel-preset-react": "^6.23.0",
+    "codecov": "^1.0.1",
     "enzyme": "^2.7.1",
     "eslint": "^3.17.1",
     "eslint-plugin-import": "^2.2.0",
