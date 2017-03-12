@@ -17,8 +17,16 @@
     "validation",
     "validate"
   ],
-  "author": "Cole Voss",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/colevoss/react-invalidate.git"
+  },
+  "files": [
+    "src",
+    "lib"
+  ],
+  "author": "Cole Voss <voss.cole@gmail.com> (https://github.com/colevoss)",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.23.0",
     "babel-eslint": "^7.1.1",
