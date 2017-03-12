@@ -4,5 +4,5 @@ node_js:
 script:
   - npm run lint
   - npm run flow
-  - npm test
+  - npm run test:cov
 cache: yarn
