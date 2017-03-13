@@ -6,33 +6,37 @@
 # React Invalidate
 React Invalidate is an easy, yet flexible way to add validation to any form in your React projects.
 
+## Validator
+The `Validator` component can be used to wrap any inputs with custom validations. This happens by providing the
+`Validator` component with one or more `validators` as well as a functional child. The child function will be passed
+an object with data about the fields current validation state as well as functions to customize how and when
+the field is validated.
 
-## How does it work?
-React Invalidate can work a couple different ways. You can use just the `Validator` component to wrap individual fields
-or you can wrap an entire form with the `ValidationProvider` component to sync up validation for the whole form,
-including things like submit buttons.
-
-
-### Single Field Validation:
-If you wanted to validate just one component, all you need to do is wrap that component in the `Validator` component
-and provide with some promise based validation like so:
-
+#### Usage:
 ```javascript
-const required = (val, message = 'Required') => {
-  return !!val.replace(/^\s+/, '') || Promise.reject('Required');
-};
+import { Validator } from 'react-invalidate'
 
+const requiredValidator = (val = '', message = 'Required') => (
+  !!val.replace(/^\s+/, '') || Promise.reject(message)
+)
 
-<Validator
-  validators={required}
-  valueGetter={() => someValue}
-  validateOn={['onBlur']}
-  id="firstName"
-  >
-  <input type="text" value={someValue} onChange={onChange} />
-</Validator>
+const ValidatedInput = () => (
+  <Validator validators={requiredValidator}>
+    {({validate, isValid, message}) => {
+      return (
+        <div>
+          <input type="text" onBlur={e => validate(e.target.value)} />
+
+          {message &&
+            <div>{message}</div>
+          }
+        </div>
+      );
+    }}
+  </Validator>
+)
 ```
 
-You can see that we gave the `Validator` component the `required` function as a validator. This function either returns
-true, if valid, or a rejected Promise. The validator function is ran on `onBlur` of the wrapped input. Any normal
-event that you can give to the wrapped input can be used in the `validateOn` function.
+In the example above, we are calling the `validate` function with the value of the input on the input's `onBlur`
+handler. `isValid` is `true` by default, but once the field has been blurred with no value, the `requiredValidator` is
+ran. Since it returns a rejected promise, it will fail validation and update the component with `isValid` as false.

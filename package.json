@@ -35,12 +35,15 @@
   "devDependencies": {
     "babel-cli": "^6.23.0",
     "babel-eslint": "^7.1.1",
+    "babel-plugin-transform-class-properties": "^6.23.0",
     "babel-preset-env": "^1.2.1",
     "babel-preset-react": "^6.23.0",
     "codecov": "^1.0.1",
     "enzyme": "^2.7.1",
     "eslint": "^3.17.1",
+    "eslint-plugin-flowtype": "^2.30.3",
     "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jest": "^19.0.1",
     "eslint-plugin-react": "^6.10.0",
     "flow-bin": "^0.41.0",
     "jest": "^19.0.2",
@@ -51,5 +54,6 @@
   },
   "jest": {
     "coverageDirectory": "./coverage"
-  }
+  },
+  "dependencies": {}
 }
