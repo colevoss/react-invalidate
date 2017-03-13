@@ -57,6 +57,7 @@
     "coverageDirectory": "./coverage"
   },
   "dependencies": {
+    "eslint-plugin-prettier": "^2.0.1",
     "prettier": "^0.22.0"
   }
 }
