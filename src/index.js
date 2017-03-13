@@ -1,9 +1,3 @@
 // @flow
 
-import React from 'react'
-
-const Test = () => (
-  <div>Test Something</div>
-)
-
-export default Test
+export { default as Validator } from './components/Validator';

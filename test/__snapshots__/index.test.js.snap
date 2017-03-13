@@ -1,6 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Test /> 1`] = `
+exports[`<Validator /> Validator.defaultState 1`] = `
+Object {
+  "isValid": true,
+  "lastValidatedValue": undefined,
+  "message": null,
+}
+`;
+
+exports[`<Validator /> passes the correct params to child function 1`] = `
+Object {
+  "clearValidation": [Function],
+  "isValid": true,
+  "message": null,
+  "validate": [Function],
+}
+`;
+
+exports[`<Validator /> renders it child function's component directly 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -8,30 +25,40 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div>
-    Test Something
-</div>,
+  "node": <div
+    className="test-child"
+/>,
   "nodes": Array [
-    <div>
-      Test Something
-</div>,
+    <div
+      className="test-child"
+/>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
     "_instance":  {
       "_calledComponentWillUnmount": false,
-      "_compositeType": 2,
+      "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <Test />,
+      "_currentElement": <Validator>
+        [Function]
+</Validator>,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
-      "_instance": StatelessComponent {
+      "_instance": Validator {
         "_reactInternalInstance": [Circular],
+        "clearValidation": [Function],
         "context": Object {},
-        "props": Object {},
+        "id": undefined,
+        "props": Object {
+          "children": [Function],
+        },
         "refs": Object {},
-        "state": null,
+        "state": Object {
+          "isValid": true,
+          "lastValidatedValue": undefined,
+          "message": null,
+        },
         "updater": Object {
           "enqueueCallback": [Function],
           "enqueueCallbackInternal": [Function],
@@ -42,6 +69,7 @@ ShallowWrapper {
           "isMounted": [Function],
           "validateCallback": [Function],
         },
+        "validate": [Function],
       },
       "_mountOrder": 1,
       "_pendingCallbacks": null,
@@ -50,13 +78,13 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div>
-          Test Something
-</div>,
+        "_currentElement": <div
+          className="test-child"
+/>,
         "_debugID": 2,
-        "_renderedOutput": <div>
-          Test Something
-</div>,
+        "_renderedOutput": <div
+          className="test-child"
+/>,
       },
       "_renderedNodeType": 0,
       "_rootNodeID": 0,
@@ -68,6 +96,8 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <Test />,
+  "unrendered": <Validator>
+    [Function]
+</Validator>,
 }
 `;

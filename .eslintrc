@@ -3,7 +3,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:import/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:flowtype/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 6,
@@ -15,7 +16,9 @@
   },
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "es6": true,
+    "jest/globals": true
   },
   "rules": {
     "valid-jsdoc": 2,
@@ -25,10 +28,9 @@
   },
   "plugins": [
     "import",
-    "react"
+    "react",
+    "flowtype",
+    "jest"
   ],
-  "globals": {
-    "expect": true,
-    "test": true
-  }
+  "globals": {}
 }
