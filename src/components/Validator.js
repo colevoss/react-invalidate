@@ -93,7 +93,7 @@ export default class Validator extends Component {
       )
       .catch(
         // Message of the first validation to fail
-        message => {
+        (message: string) => {
           this._mounted &&
             this.setState({
               isValid: false,
