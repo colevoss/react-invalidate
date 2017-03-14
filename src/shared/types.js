@@ -1,23 +1,22 @@
 // @flow
 
-// <Validator />
-export type FailedValidation = Promise<string>;
+export type FieldValue = string | number | Array<*> | Object;
+export type VR = string | boolean;
+export type ValidationResult = Promise<*>;
+export type AsyncValidator = (value: ?FieldValue) => ValidationResult;
 
-export type ValidatorFunction = (val: any, message?: string) => FailedValidation | boolean;
-export type FieldValidator = (value: ?any) => Promise<string | boolean>;
+// <Validator />
 
 export type ValidationClearer = () => void;
 
 export type ChildParams = {
-  validate: FieldValidtor,
+  validate: AsyncValidator,
   isValid: boolean,
   message: ?string,
   clearValidation: ValidationClearer,
 };
 
 export type ValidatorChildFunction = (params: ChildParams) => React$Element<*>;
-
-export type FieldValue = string | number | Array | Object;
 
 // coreValidator
 

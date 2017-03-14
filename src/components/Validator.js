@@ -4,10 +4,10 @@ import { PropTypes, Component } from 'react';
 import runValidators from '../utils/runValidators';
 
 import type {
-  ValidatorFunction,
+  AsyncValidator,
+  ValidationResult,
   ValidatorChildFunction,
   ChildParams,
-  FieldValidator,
   ValidationClearer,
   CoreValidator,
   FieldValue,
@@ -23,7 +23,7 @@ type State = {
 
 type Props = {
   children: ValidatorChildFunction,
-  validators: ValidatorFunction | Array<ValidatorFunction>,
+  validators: AsyncValidator | Array<AsyncValidator>,
   id: string,
   initialValue?: FieldValue,
   validateOnMount: boolean,
@@ -106,7 +106,7 @@ export default class Validator extends Component {
     this.setState(this.defaultState());
   };
 
-  validate: FieldValidator = async (value: FieldValue): Promise<string | boolean> => {
+  validate = async (value: ?FieldValue): ValidationResult => {
     const validators = Array.isArray(this.props.validators) ? this.props.validators : [this.props.validators];
     const toValidate = value || this.state.lastValidatedValue;
 
