@@ -23,15 +23,13 @@
   "rules": {
     "react/jsx-uses-react": 1,
     "react/jsx-no-undef": 2,
-    "react/jsx-wrap-multilines": 2,
-    "prettier/prettier": ["error", {"trailingComma": true, "singleQuote": true}]
+    "react/jsx-wrap-multilines": 2
   },
   "plugins": [
     "import",
     "react",
     "flowtype",
-    "jest",
-    "prettier"
+    "jest"
   ],
   "globals": {}
 }

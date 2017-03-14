@@ -48,7 +48,9 @@ ShallowWrapper {
       "_instance": Validator {
         "_reactInternalInstance": [Circular],
         "clearValidation": [Function],
-        "context": Object {},
+        "context": Object {
+          "validator": undefined,
+        },
         "id": undefined,
         "props": Object {
           "children": [Function],
@@ -70,6 +72,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
         "validate": [Function],
+        "validator": undefined,
       },
       "_mountOrder": 1,
       "_pendingCallbacks": null,
