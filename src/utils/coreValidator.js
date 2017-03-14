@@ -18,6 +18,7 @@ export default function initializeCoreValidator(): CoreValidator {
 
   const isValidating = () => _isValidating;
   const getValidations = () => registeredValidators;
+  const getSubscriptions = () => listeners;
 
   // Removes the listener at index
   const unsubscribe = (index: number) => listeners.splice(index, 1);
@@ -30,7 +31,7 @@ export default function initializeCoreValidator(): CoreValidator {
   };
 
   // Remove validator from registeredValidators
-  const derigisterValidator = (name: string): RegisteredValidators => Object.keys(registeredValidators).reduce(
+  const deregisterValidator = (name: string): RegisteredValidators => Object.keys(registeredValidators).reduce(
     (validatorMap, key) => {
       if (key === name) return validatorMap;
 
@@ -55,7 +56,7 @@ export default function initializeCoreValidator(): CoreValidator {
 
     return () => {
       unsubscriber && unsubscriber();
-      registeredValidators = derigisterValidator(name);
+      registeredValidators = deregisterValidator(name);
     };
   };
 
@@ -90,10 +91,11 @@ export default function initializeCoreValidator(): CoreValidator {
   return {
     isValidating,
     getValidations,
+    getSubscriptions,
     unsubscribe,
     subscribe,
     registerValidator,
-    derigisterValidator,
+    deregisterValidator,
     onValidate,
     areAllValid,
     validate,

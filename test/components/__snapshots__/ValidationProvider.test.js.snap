@@ -1,23 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Validator /> Validator.defaultState 1`] = `
-Object {
-  "isValid": true,
-  "lastValidatedValue": undefined,
-  "message": null,
-}
-`;
-
-exports[`<Validator /> passes the correct params to child function 1`] = `
-Object {
-  "clearValidation": [Function],
-  "isValid": true,
-  "message": null,
-  "validate": [Function],
-}
-`;
-
-exports[`<Validator /> renders it child function's component directly 1`] = `
+exports[`<ValidationProvider /> renders it child function's component directly 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -39,28 +22,24 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <Validator>
-        [Function]
-</Validator>,
+      "_currentElement": <ValidationProvider>
+        <div
+                className="test-child"
+        />
+</ValidationProvider>,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
-      "_instance": Validator {
+      "_instance": ValidationProvider {
         "_reactInternalInstance": [Circular],
-        "clearValidation": [Function],
-        "context": Object {
-          "validator": undefined,
-        },
-        "id": undefined,
+        "context": Object {},
         "props": Object {
-          "children": [Function],
+          "children": <div
+            className="test-child"
+/>,
         },
         "refs": Object {},
-        "state": Object {
-          "isValid": true,
-          "lastValidatedValue": undefined,
-          "message": null,
-        },
+        "state": null,
         "updater": Object {
           "enqueueCallback": [Function],
           "enqueueCallbackInternal": [Function],
@@ -71,8 +50,18 @@ ShallowWrapper {
           "isMounted": [Function],
           "validateCallback": [Function],
         },
-        "validate": [Function],
-        "validator": undefined,
+        "validator": Object {
+          "areAllValid": [Function],
+          "deregisterValidator": [Function],
+          "getSubscriptions": [Function],
+          "getValidations": [Function],
+          "isValidating": [Function],
+          "onValidate": [Function],
+          "registerValidator": [Function],
+          "subscribe": [Function],
+          "unsubscribe": [Function],
+          "validate": [Function],
+        },
       },
       "_mountOrder": 1,
       "_pendingCallbacks": null,
@@ -99,8 +88,25 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <Validator>
-    [Function]
-</Validator>,
+  "unrendered": <ValidationProvider>
+    <div
+        className="test-child"
+    />
+</ValidationProvider>,
+}
+`;
+
+exports[`<ValidationProvider /> sets this.validator to coreValidator 1`] = `
+Object {
+  "areAllValid": [Function],
+  "deregisterValidator": [Function],
+  "getSubscriptions": [Function],
+  "getValidations": [Function],
+  "isValidating": [Function],
+  "onValidate": [Function],
+  "registerValidator": [Function],
+  "subscribe": [Function],
+  "unsubscribe": [Function],
+  "validate": [Function],
 }
 `;

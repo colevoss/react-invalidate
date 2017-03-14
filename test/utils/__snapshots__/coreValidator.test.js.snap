@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`initializeCoreValidator onValidate() updates registeredValidators 1`] = `
+Object {
+  "test": false,
+}
+`;
+
+exports[`initializeCoreValidator registerValidator()/derigisterValidator() it adds a new validator to registeredValidators 1`] = `
+Object {
+  "test": true,
+}
+`;
+
+exports[`initializeCoreValidator returns the correct shape 1`] = `
+Object {
+  "areAllValid": [Function],
+  "deregisterValidator": [Function],
+  "getSubscriptions": [Function],
+  "getValidations": [Function],
+  "isValidating": [Function],
+  "onValidate": [Function],
+  "registerValidator": [Function],
+  "subscribe": [Function],
+  "unsubscribe": [Function],
+  "validate": [Function],
+}
+`;

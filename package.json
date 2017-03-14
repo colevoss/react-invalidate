@@ -55,7 +55,7 @@
     "rimraf": "^2.6.1"
   },
   "jest": {
-    "coverageDirectory": "./coverage"
+    "coverageDirectory": "<rootDir>/coverage"
   },
   "dependencies": {
     "eslint-plugin-prettier": "^2.0.1",

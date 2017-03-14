@@ -9,9 +9,9 @@ type Props = {
   children: React$Element<*>,
 };
 
-type Context = {
-  validator: CoreValidator,
-};
+// type Context = {
+//   validator: CoreValidator,
+// };
 
 export default class ValidationProvider extends Component {
   static propTypes = {
@@ -22,8 +22,8 @@ export default class ValidationProvider extends Component {
     validator: CoreValidatorPropTypes,
   };
 
-  constructor(props: Props, context: Context) {
-    super(props, context);
+  constructor(props: Props) {
+    super(props);
 
     this.validator = initializeCoreValidator();
   }
@@ -35,7 +35,7 @@ export default class ValidationProvider extends Component {
   }
 
   props: Props;
-  context: Context;
+  // context: Context;
   validator: CoreValidator;
 
   render() {

@@ -78,7 +78,7 @@ export default class Validator extends Component {
     this.unsubscribe && this.unsubscribe();
   }
 
-  validateOnMount(): void {
+  validateOnMount() {
     this.props.validateOnMount && this.validate();
   }
 
