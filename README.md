@@ -1,42 +1,41 @@
-[![Build Status](https://travis-ci.org/colevoss/react-invalidate.svg?branch=master)](https://travis-ci.org/colevoss/react-invalidate)
-[![npm](https://img.shields.io/npm/v/react-invalidate.svg)](https://www.npmjs.com/package/react-invalidate)
-[![npm](https://img.shields.io/npm/dm/react-invalidate.svg)](https://www.npmjs.com/package/react-invalidate)
-[![codecov](https://codecov.io/gh/colevoss/react-invalidate/branch/master/graph/badge.svg)](https://codecov.io/gh/colevoss/react-invalidate)
+# React Invalidate [![Build Status](https://travis-ci.org/colevoss/react-invalidate.svg?branch=master)](https://travis-ci.org/colevoss/react-invalidate) [![npm](https://img.shields.io/npm/v/react-invalidate.svg)](https://www.npmjs.com/package/react-invalidate) [![npm](https://img.shields.io/npm/dm/react-invalidate.svg)](https://www.npmjs.com/package/react-invalidate) [![codecov](https://codecov.io/gh/colevoss/react-invalidate/branch/master/graph/badge.svg)](https://codecov.io/gh/colevoss/react-invalidate)
 
-# React Invalidate
 React Invalidate is an easy, yet flexible way to add validation to any form in your React projects.
 
-## Validator
-The `Validator` component can be used to wrap any inputs with custom validations. This happens by providing the
-`Validator` component with one or more `validators` as well as a functional child. The child function will be passed
-an object with data about the fields current validation state as well as functions to customize how and when
-the field is validated.
 
-#### Usage:
+## Instalation
+* npm: `npm install --save react-invalidate`
+* yarn: `yarn add react-invalidate`
+
+
+### Usage
+
+#### Single Field Validation
+If you want to validate one field, you can do so with the `Validator` component. You can supply the `Validator`
+component with one or more validator functions as well as a functional child that renders the field to be validated. The
+child function receives an object with a `validate` function, the validation status as `isValid`, and the failed
+validation message provided by the validator(s). You can call the validate function on any of the input's events
+and when the validation is complete it will update the `isValid` and `message` values.
+
 ```javascript
-import { Validator } from 'react-invalidate'
+import { Validator } from 'react-invalidate';
 
-const requiredValidator = (val = '', message = 'Required') => (
-  !!val.replace(/^\s+/, '') || Promise.reject(message)
-)
+const requiredValidator = (value: any, message: string = 'Required') => !!value ? true : Promise.reject(message);
 
-const ValidatedInput = () => (
+const SomeInput = ({ inputValue }) => (
   <Validator validators={requiredValidator}>
-    {({validate, isValid, message}) => {
-      return (
-        <div>
-          <input type="text" onBlur={e => validate(e.target.value)} />
+    {({ validate, isValid, message }) => (
+      <div>
+      <input
+        type="text"
+        value={inputValue}
+        className={isValid ? 'normal-input' : 'invalid-input'}
+        onBlur={e => validate(e.target.value)}
+      />
 
-          {message &&
-            <div>{message}</div>
-          }
-        </div>
-      );
-    }}
+        {message && <div>{message}</div>}
+      </div>
+    )}
   </Validator>
 )
 ```
-
-In the example above, we are calling the `validate` function with the value of the input on the input's `onBlur`
-handler. `isValid` is `true` by default, but once the field has been blurred with no value, the `requiredValidator` is
-ran. Since it returns a rejected promise, it will fail validation and update the component with `isValid` as false.
