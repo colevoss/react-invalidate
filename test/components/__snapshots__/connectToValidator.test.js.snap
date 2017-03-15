@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`connectToValidator throws error if anything but a function is provided 1`] = `"mapValidatorToProps needs to be a function."`;
+
+exports[`connectToValidator throws error if mapValidatorToProps doesnt return object 1`] = `"provided mapValidatorToProps function needs to return an object."`;

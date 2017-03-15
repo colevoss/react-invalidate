@@ -1,12 +1,11 @@
 {
   "name": "react-invalidate",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Validation library for react based forms",
   "main": "./lib/index.js",
   "module": "./src/index.js",
   "scripts": {
     "build": "babel src -d lib",
-    "build:es": "BABEL_ENV=es babel src -d es",
     "build:watch": "npm run build -- --watch",
     "lint": "./node_modules/.bin/eslint src test",
     "prettier": "prettier --single-quote --trailing-comma es5 --write \"{src,test}/**/*.js\"",
@@ -32,12 +31,21 @@
     "lib"
   ],
   "author": "Cole Voss <voss.cole@gmail.com> (https://github.com/colevoss)",
+  "bugs": {
+    "url": "https://github.com/colevoss/react-invalidate/issues"
+  },
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.23.0",
     "babel-eslint": "^7.1.1",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-async-to-generator": "^6.22.0",
     "babel-plugin-transform-class-properties": "^6.23.0",
-    "babel-preset-env": "^1.2.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-regenerator": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-es2016": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "codecov": "^1.0.1",
     "enzyme": "^2.7.1",
@@ -45,19 +53,22 @@
     "eslint-plugin-flowtype": "^2.30.3",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jest": "^19.0.1",
+    "eslint-plugin-prettier": "^2.0.1",
     "eslint-plugin-react": "^6.10.0",
     "flow-bin": "^0.41.0",
+    "invariant": "^2.2.2",
     "jest": "^19.0.2",
+    "prettier": "^0.22.0",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
     "rimraf": "^2.6.1"
   },
   "jest": {
-    "coverageDirectory": "./coverage"
+    "coverageDirectory": "<rootDir>/coverage"
   },
-  "dependencies": {
-    "eslint-plugin-prettier": "^2.0.1",
-    "prettier": "^0.22.0"
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0-0"
   }
 }

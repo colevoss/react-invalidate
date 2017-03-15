@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#runValidators calls each validator 1`] = `
+Array [
+  [Function],
+  [Function],
+]
+`;
