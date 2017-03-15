@@ -9,10 +9,6 @@ type Props = {
   children: React$Element<*>,
 };
 
-// type Context = {
-//   validator: CoreValidator,
-// };
-
 export default class ValidationProvider extends Component {
   static propTypes = {
     children: PropTypes.node,
@@ -35,7 +31,6 @@ export default class ValidationProvider extends Component {
   }
 
   props: Props;
-  // context: Context;
   validator: CoreValidator;
 
   render() {

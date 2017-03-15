@@ -6,7 +6,6 @@
   "module": "./src/index.js",
   "scripts": {
     "build": "babel src -d lib",
-    "build:es": "BABEL_ENV=es babel src -d es",
     "build:watch": "npm run build -- --watch",
     "lint": "./node_modules/.bin/eslint src test",
     "prettier": "prettier --single-quote --trailing-comma es5 --write \"{src,test}/**/*.js\"",

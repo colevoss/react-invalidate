@@ -81,7 +81,7 @@ describe('<Validator />', () => {
               onBlur={() => {
                 validate().then(val => {
                   expect(val).toBeTruthy();
-                  expect(validator.onValidate.mock.calls.length).toBe(1);
+                  expect(validator.onValidate).toHaveBeenCalled();
                   expect(validator.onValidate.mock.calls[0][1]).toBeTruthy();
                 });
               }}
@@ -233,9 +233,9 @@ describe('<Validator />', () => {
 
       validator.registerValidator.mock.calls[0][1]();
 
-      expect(validator.registerValidator.mock.calls.length).toBe(1);
+      expect(validator.registerValidator).toHaveBeenCalled();
       expect(validator.registerValidator.mock.calls[0][0]).toBe('id');
-      expect(mockValidator.mock.calls.length).toBe(1);
+      expect(mockValidator).toHaveBeenCalled();
       expect(wrapper.instance().unsubscribe).toBe('unsubscribe');
     });
 
@@ -251,9 +251,8 @@ describe('<Validator />', () => {
 
       wrapper.instance().onValidate();
 
-      expect(validator.onValidate.mock.calls.length).toBe(1);
-      expect(validator.onValidate.mock.calls[0][0]).toBe('id');
-      expect(validator.onValidate.mock.calls[0][1]).toBeTruthy();
+      expect(validator.onValidate).toHaveBeenCalled();
+      expect(validator.onValidate).toHaveBeenCalledWith('id', true);
     });
   });
 });
