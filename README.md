@@ -141,7 +141,7 @@ email uniqueness.
 const uniqueEmailValidator = async (email: string, message: string = 'Email must be unique') => {
   const isEmailUnique = await checkEmailUniquenessWithServer(email);
 
-  if (!isEmailUnique) throw 'Email is not unique'; // Same as returning a rejected promise
+  if (!isEmailUnique) throw message; // Same as returning a rejected promise
 
   return isEmailUnique;
 };
