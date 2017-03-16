@@ -1,6 +1,6 @@
 {
   "name": "react-invalidate",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Validation library for react based forms",
   "main": "./lib/index.js",
   "module": "./src/index.js",
