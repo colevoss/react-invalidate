@@ -58,41 +58,43 @@ import { requiredValidator } from '../path/to/validators';
 import FormSubmitButton from '../path/to/FormSubmitButton';
 
 const Form = ({ onSubmit }) => (
-  <div>
-    <Validator validators={requiredValidator} id="first-name">
-      {({ validate, isValid, message }) => (
-        <div>
-          <input
-            type="text"
-            name="first-name"
-            value={inputValue}
-            className={isValid ? 'normal-input' : 'invalid-input'}
-            onBlur={e => validate(e.target.value)}
-          />
+  <ValidationProvider>
+    <div>
+      <Validator validators={requiredValidator} id="first-name">
+        {({ validate, isValid, message }) => (
+          <div>
+            <input
+              type="text"
+              name="first-name"
+              value={inputValue}
+              className={isValid ? 'normal-input' : 'invalid-input'}
+              onBlur={e => validate(e.target.value)}
+            />
 
-          {message && <div>{message}</div>}
-        </div>
-      )}
-    </Validator>
+            {message && <div>{message}</div>}
+          </div>
+        )}
+      </Validator>
 
-    <Validator validators={requiredValidator} id="last-name">
-      {({ validate, isValid, message }) => (
-        <div>
-          <input
-            type="text"
-            name="last-name"
-            value={inputValue}
-            className={isValid ? 'normal-input' : 'invalid-input'}
-            onBlur={e => validate(e.target.value)}
-          />
+      <Validator validators={requiredValidator} id="last-name">
+        {({ validate, isValid, message }) => (
+          <div>
+            <input
+              type="text"
+              name="last-name"
+              value={inputValue}
+              className={isValid ? 'normal-input' : 'invalid-input'}
+              onBlur={e => validate(e.target.value)}
+            />
 
-          {message && <div>{message}</div>}
-        </div>
-      )}
-    </Validator>
+            {message && <div>{message}</div>}
+          </div>
+        )}
+      </Validator>
 
-    <FormSubmitButton onClick={onSubmit} />
-  </div>
+      <FormSubmitButton onClick={onSubmit} />
+    </div>
+  </ValidationProvider>
 );
 
 export default Form;
