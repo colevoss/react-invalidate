@@ -7,6 +7,8 @@ React Invalidate is an easy, yet flexible way to add validation to any form in y
 * npm: `npm install --save react-invalidate`
 * yarn: `yarn add react-invalidate`
 
+## Example
+Checkout the [react-invalidate-sandbox](https://github.com/colevoss/react-invalidate-sandbox) repo to see it in action.
 
 ## Usage
 
