@@ -133,6 +133,52 @@ Since the button runs all of the field validations, each field will be automatic
 and failed validation `message` and update showing accordingly.
 
 
+### Asyc Validations
+Since validations can return promises, you can write asynchronous validators with relative ease. Say we wanted to validate
+that a user's email is unique at signup, we would need to write a validator that makes a call to some back end to check for
+email uniqueness.
+
+**uniqueEmailValidator.js**
+```javascript
+const uniqueEmailValidator = async (email: string, message: string = 'Email must be unique') => {
+  const isEmailUnique = await checkEmailUniquenessWithServer(email);
+
+  if (!isEmailUnique) throw message; // Same as returning a rejected promise
+
+  return isEmailUnique;
+};
+
+export default uniqueEmailValidator;
+```
+
+**form.jsx**
+```javascript
+import uniqueEmailValidator from '../path/to/uniqueEmailValidator';
+import requiredValidator from '../path/to/requiredValidator';
+
+const SomeInput = ({ inputValue }) => (
+  <Validator validators={[requiredValidator, uniqueEmailValidator]}>
+    {({ validate, isValid, message }) => (
+      <div>
+        <input
+          type="text"
+          value={inputValue}
+          className={isValid ? 'normal-input' : 'invalid-input'}
+          onBlur={e => validate(e.target.value)}
+        />
+
+        {message && <div>{message}</div>}
+      </div>
+    )}
+  </Validator>
+)
+```
+
+Now, when this field is blurred, it will run the required validator and the uniqueEmailValidator. If the field is blank
+the requiredValidator will throw first and show the required message. If the field is not blank, the uniqueEmailValidator
+will be ran and fail if the email is not unique, updating the `isValid` and `message` args appropriately.
+
+
 ### Todo:
 * Fully document each component
 * Research integrations with [valerie](https://github.com/developerdizzle/valerie)
