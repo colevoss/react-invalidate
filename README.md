@@ -8,9 +8,9 @@ React Invalidate is an easy, yet flexible way to add validation to any form in y
 * yarn: `yarn add react-invalidate`
 
 
-### Usage
+## Usage
 
-#### Single Field Validation
+### Single Field Validation
 If you want to validate one field, you can do so with the `Validator` component. You can supply the `Validator`
 component with one or more validator functions as well as a functional child that renders the field to be validated.
 
@@ -42,3 +42,88 @@ const SomeInput = ({ inputValue }) => (
   </Validator>
 )
 ```
+
+### Form Validation
+If you want to have a form with multiple validated inputs, where a certain action would validate all the fields, you
+can wrap the form in the `ValidationProvider` component. This uses a `react-redux` style subscription model to keep track
+of each field wrapped in a `Validator` component that is a child of the `ValidationProvider`;
+
+To gain access to the central validator, you can wrap any component in the `connectToValidator` higher order component
+to call the global `validate` function and get data about the validation status of the form.
+
+**Form.jsx**
+```javascript
+import { ValidationProvider, Validator } from 'react-invalidate';
+import { requiredValidator } from '../path/to/validators';
+import FormSubmitButton from '../path/to/FormSubmitButton';
+
+const Form = ({ onSubmit }) => (
+  <div>
+    <Validator validators={requiredValidator} id="first-name">
+      {({ validate, isValid, message }) => (
+        <div>
+          <input
+            type="text"
+            name="first-name"
+            value={inputValue}
+            className={isValid ? 'normal-input' : 'invalid-input'}
+            onBlur={e => validate(e.target.value)}
+          />
+
+          {message && <div>{message}</div>}
+        </div>
+      )}
+    </Validator>
+
+    <Validator validators={requiredValidator} id="last-name">
+      {({ validate, isValid, message }) => (
+        <div>
+          <input
+            type="text"
+            name="last-name"
+            value={inputValue}
+            className={isValid ? 'normal-input' : 'invalid-input'}
+            onBlur={e => validate(e.target.value)}
+          />
+
+          {message && <div>{message}</div>}
+        </div>
+      )}
+    </Validator>
+
+    <FormSubmitButton onClick={onSubmit} />
+  </div>
+);
+
+export default Form;
+```
+
+**FormSubmitButton.jsx**
+```javascript
+import { connectToValidator } from 'react-invalidate';
+
+const FormSubmitButton = ({ onClick }) => (
+  <button onClick={onClick}>Submit Form</button>
+);
+
+
+const mapValidatorToProps = (validator, ownProps) => ({
+  onClick: async () => {
+    const isValid = await validator.validate();
+
+    if (!isValid) return false;
+
+    ownProps.onClick();
+  },
+})
+
+export default connectToValidator(mapValidatorToProps)(FormSubmitButton);
+```
+
+In the example above, the `FormSubmitButton` will run validations for all `Validator` wrapped inputs in the form. If
+it returns `false`, it will not submit the form because it never gets to the `ownProps.onClick` function.
+
+Inversely, if all fields are valid, it will call it's `onClick` function and everything will be grand.
+
+Since the button runs all of the field validations, each field will be automatically updated with is new `isValid` status
+and failed validation `message` and update showing accordingly.
