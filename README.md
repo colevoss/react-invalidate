@@ -46,7 +46,7 @@ const SomeInput = ({ inputValue }) => (
 ### Form Validation
 If you want to have a form with multiple validated inputs, where a certain action would validate all the fields, you
 can wrap the form in the `ValidationProvider` component. This uses a `react-redux` style subscription model to keep track
-of each field wrapped in a `Validator` component that is a child of the `ValidationProvider`;
+of each field wrapped in a `Validator` component that is a child of the `ValidationProvider`.
 
 To gain access to the central validator, you can wrap any component in the `connectToValidator` higher order component
 to call the global `validate` function and get data about the validation status of the form.
@@ -129,3 +129,8 @@ Inversely, if all fields are valid, it will call it's `onClick` function and eve
 
 Since the button runs all of the field validations, each field will be automatically updated with is new `isValid` status
 and failed validation `message` and update showing accordingly.
+
+
+### Todo:
+* Fully document each component
+* Research integrations with [valerie](https://github.com/developerdizzle/valerie)
