@@ -133,7 +133,7 @@ and failed validation `message` and update showing accordingly.
 
 ### Asyc Validations
 Since validations can return promises, you can write asynchronous validators with relative ease. Say we wanted to validate
-that a user's email at signup, we would need to write a validator that makes a call to some back end to check for
+that a user's email is unique at signup, we would need to write a validator that makes a call to some back end to check for
 email uniqueness.
 
 **uniqueEmailValidator.js**
